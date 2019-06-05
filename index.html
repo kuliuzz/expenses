@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Kolyo's Expenses</title>
+        <meta name="description" content="A helper app used by me to monitor my monthly expenses">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="css/materialize.css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    </head>
+    <body>
+        <div class="row">
+            <form class="col s12">
+              <div class="row">
+                <div class="input-field col s6">
+                  <input placeholder="Place sum" id="first_name" type="number" class="validate">
+                  <label for="first_name">Ammount spent</label>
+                </div>
+                <ul id="dropdown2" class="dropdown-content">
+                    <li><a href="#!">Daily</a></li>
+                    <li><a href="#!">Weekend</a></li>
+                    <li><a href="#!">Vacation</a></li>
+                    <li><a href="#!">Other</a></li>
+                  </ul>
+                  <a class="btn dropdown-trigger" href="#!" data-target="dropdown2">Add Tag<i class="material-icons right">arrow_drop_down</i></a>
+              </div>
+            </form>
+        </div>
+
+        <script src="js/materialize.js"></script>
+        <script>
+            let tags = {
+                daily:{
+                    one: '#4245f4',
+                    two: '#56f441'
+                },
+                weekend:{                   
+                    one: '#41f4c1',
+                    two: '#f44158'
+                    },
+                vacation:{
+                    one: '#e2f441',
+                    two: '#f44141'
+                }
+            };
+            document.addEventListener('DOMContentLoaded', function() {
+                var elems = document.querySelectorAll('.dropdown-trigger');
+                var instances = M.Dropdown.init(elems);
+            });
+        </script>
+        
+
+    </body>
+</html>
