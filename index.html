@@ -21,32 +21,66 @@
                   <label for="first_name">Ammount spent</label>
                 </div>
                 <ul id="dropdown2" class="dropdown-content">
-                    <li><a href="#!">Daily</a></li>
-                    <li><a href="#!">Weekend</a></li>
-                    <li><a href="#!">Vacation</a></li>
-                    <li><a href="#!">Other</a></li>
+                    <li><a class="modal-trigger" href="#modal1">Daily</a></li>
+                    <li><a class="modal-trigger" href="modal2">Weekend</a></li>
+                    <li><a class="modal-trigger" href="modal3">Vacation</a></li>
+                    <li><a class="modal-trigger" href="modal4">Other</a></li>
                   </ul>
                   <a class="btn dropdown-trigger" href="#!" data-target="dropdown2">Add Tag<i class="material-icons right">arrow_drop_down</i></a>
               </div>
             </form>
         </div>
+        <div id="modals-container"></div>
 
         <script src="js/materialize.js"></script>
         <script>
             let tags = {
                 daily:{
+                    id:1,
                     one: '#4245f4',
                     two: '#56f441'
                 },
-                weekend:{                   
+                weekend:{
+                    id:2,                   
                     one: '#41f4c1',
                     two: '#f44158'
                     },
                 vacation:{
+                    id:3,
+                    one: '#e2f441',
+                    two: '#f44141'
+                },
+                other:{
+                    id:4,
                     one: '#e2f441',
                     two: '#f44141'
                 }
             };
+            function createmyElements(name,id){
+                return [
+                        `<div id="modal${id}" class="modal">`,
+                            `<div class="modal-content">`,
+                            `<h4>${name}</h4>`,
+                            `<p>A bunch of text</p>`,
+                            `</div>`,
+                            `<div class="modal-footer">`,
+                            `<a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>`,
+                            `</div>`,
+                        `</div>`
+                        ].join('\n');
+}
+            document.addEventListener('DOMContentLoaded', function() {
+                let modalContainer = document.getElementById('.modal-container');
+                let array = []
+                for (const key in tags) {
+                    array.push(createmyElements(key,tags[key].id))
+                }
+
+                var elems = document.querySelectorAll('.modal');
+                var instances = M.Modal.init(elems);
+                console.log(array)
+            });
+            
             document.addEventListener('DOMContentLoaded', function() {
                 var elems = document.querySelectorAll('.dropdown-trigger');
                 var instances = M.Dropdown.init(elems);
