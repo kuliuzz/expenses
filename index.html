@@ -22,9 +22,9 @@
                 </div>
                 <ul id="dropdown2" class="dropdown-content">
                     <li><a class="modal-trigger" href="#modal1">Daily</a></li>
-                    <li><a class="modal-trigger" href="modal2">Weekend</a></li>
-                    <li><a class="modal-trigger" href="modal3">Vacation</a></li>
-                    <li><a class="modal-trigger" href="modal4">Other</a></li>
+                    <li><a class="modal-trigger" href="#modal2">Weekend</a></li>
+                    <li><a class="modal-trigger" href="#modal3">Vacation</a></li>
+                    <li><a class="modal-trigger" href="#modal4">Other</a></li>
                   </ul>
                   <a class="btn dropdown-trigger" href="#!" data-target="dropdown2">Add Tag<i class="material-icons right">arrow_drop_down</i></a>
               </div>
@@ -33,6 +33,29 @@
         <div id="modals-container"></div>
 
         <script src="js/materialize.js"></script>
+        <!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-database.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#config-web-app -->
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyDMKjI6cFxw7dl67nbdPpDeDikK-0w5c08",
+    authDomain: "salary-03062019.firebaseapp.com",
+    databaseURL: "https://salary-03062019.firebaseio.com",
+    projectId: "salary-03062019",
+    storageBucket: "salary-03062019.appspot.com",
+    messagingSenderId: "112452997969",
+    appId: "1:112452997969:web:cb834b3b640fecd3"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  var database = firebase.database();
+  console.log(database)
+</script>
         <script>
             let tags = {
                 daily:{
@@ -71,20 +94,29 @@
 }
             document.addEventListener('DOMContentLoaded', function() {
                 let modalContainer = document.getElementById('.modal-container');
-                let array = []
+                let array1 = []
                 for (const key in tags) {
-                    array.push(createmyElements(key,tags[key].id))
+                    array1.push(createmyElements(key,tags[key].id))
+                    document.querySelector('#modals-container').innerHTML += createmyElements(key,tags[key].id);
                 }
 
                 var elems = document.querySelectorAll('.modal');
                 var instances = M.Modal.init(elems);
-                console.log(array)
+
+                console.log(array1)
             });
             
             document.addEventListener('DOMContentLoaded', function() {
                 var elems = document.querySelectorAll('.dropdown-trigger');
                 var instances = M.Dropdown.init(elems);
             });
+            function writeUserData(array1) {
+                firebase.database().ref('users/' + '1').set({
+                    array1
+                });
+                }
+                writeUserData()
+            
         </script>
         
 
