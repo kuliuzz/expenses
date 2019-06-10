@@ -25,12 +25,36 @@
                     <li><a class="modal-trigger" href="#modal2">Weekend</a></li>
                     <li><a class="modal-trigger" href="#modal3">Vacation</a></li>
                     <li><a class="modal-trigger" href="#modal4">Other</a></li>
+                    <li><a class="modal-trigger" href="#modal-add-tag">Create tag</a></li>
                   </ul>
                   <a class="btn dropdown-trigger" href="#!" data-target="dropdown2">Add Tag<i class="material-icons right">arrow_drop_down</i></a>
               </div>
             </form>
         </div>
-        <div id="modals-container"></div>
+        <div id="modals-container">
+            <div id="modal-add-tag" class="modal">
+                <div class="modal-content row">
+                    <h4>Add a new tag</h4>
+                    <div class="input-field col s5">
+                        <input placeholder="New Tag name here" id="new_tag_name" type="text" class="validate">
+                        <label for="new_tag_name">Write Tag name</label>
+                    </div>
+                    <div class="input-field col s5">
+                        <input placeholder="New Tag sum here" id="new_tag_sum" type="number" class="validate">
+                        <label for="new_tag_sum">Write Tag sum</label>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s5">
+                            <p>Pick a color for the new Tag</p>
+                            <input type="color" id="head" name="head" value="#e66465" class="input-field col s6">
+                        </div>
+                    </div>    
+                </div>
+                <div class="modal-footer">
+                    <a href="#!" class="modal-close waves-effect waves-green btn-flat" id="add-new-tag">Add</a>
+                </div>
+            </div>
+        </div>
 
         <script src="js/materialize.js"></script>
         <!-- The core Firebase JS SDK is always required and must be listed first -->
@@ -42,18 +66,18 @@
 
 <script>
   // Your web app's Firebase configuration
-  var firebaseConfig = {
-    apiKey: "AIzaSyDMKjI6cFxw7dl67nbdPpDeDikK-0w5c08",
-    authDomain: "salary-03062019.firebaseapp.com",
-    databaseURL: "https://salary-03062019.firebaseio.com",
-    projectId: "salary-03062019",
-    storageBucket: "salary-03062019.appspot.com",
-    messagingSenderId: "112452997969",
-    appId: "1:112452997969:web:cb834b3b640fecd3"
-  };
-  // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
-  var database = firebase.database();
+//   var firebaseConfig = {
+//     apiKey: "AIzaSyDMKjI6cFxw7dl67nbdPpDeDikK-0w5c08",
+//     authDomain: "salary-03062019.firebaseapp.com",
+//     databaseURL: "https://salary-03062019.firebaseio.com",
+//     projectId: "salary-03062019",
+//     storageBucket: "salary-03062019.appspot.com",
+//     messagingSenderId: "112452997969",
+//     appId: "1:112452997969:web:cb834b3b640fecd3"
+//   };
+//   // Initialize Firebase
+//   firebase.initializeApp(firebaseConfig);
+  let database = firebase.database().ref()
   console.log(database)
 </script>
         <script>
@@ -110,12 +134,12 @@
                 var elems = document.querySelectorAll('.dropdown-trigger');
                 var instances = M.Dropdown.init(elems);
             });
-            function writeUserData(array1) {
-                firebase.database().ref('users/' + '1').set({
-                    array1
-                });
-                }
-                writeUserData()
+            // function writeUserData(array1) {
+            //     firebase.database().ref('users/' + '1').set({
+            //         array1
+            //     });
+            //     }
+            //     writeUserData()
             
         </script>
         
