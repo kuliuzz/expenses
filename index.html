@@ -66,18 +66,20 @@
 
 <script>
   // Your web app's Firebase configuration
-//   var firebaseConfig = {
-//     apiKey: "AIzaSyDMKjI6cFxw7dl67nbdPpDeDikK-0w5c08",
-//     authDomain: "salary-03062019.firebaseapp.com",
-//     databaseURL: "https://salary-03062019.firebaseio.com",
-//     projectId: "salary-03062019",
-//     storageBucket: "salary-03062019.appspot.com",
-//     messagingSenderId: "112452997969",
-//     appId: "1:112452997969:web:cb834b3b640fecd3"
-//   };
-//   // Initialize Firebase
-//   firebase.initializeApp(firebaseConfig);
+  var firebaseConfig = {
+    apiKey: "AIzaSyDMKjI6cFxw7dl67nbdPpDeDikK-0w5c08",
+    authDomain: "salary-03062019.firebaseapp.com",
+    databaseURL: "https://salary-03062019.firebaseio.com",
+    projectId: "salary-03062019",
+    storageBucket: "salary-03062019.appspot.com",
+    messagingSenderId: "112452997969",
+    appId: "1:112452997969:web:cb834b3b640fecd3"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+
   let database = firebase.database().ref()
+  database.on('value', snap => {console.log(snap)})
   console.log(database)
 </script>
         <script>
